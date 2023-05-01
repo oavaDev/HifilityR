@@ -7,29 +7,31 @@ const Login = () => {
     password: '',
   });
 
-  /*  const [errorEmail, setErrorEmail] = useState(false);
+  const [data, setData] = useState();
+  const [token, setToken] = useState('');
+
+  const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
 
   const handleEmail = (e) => {
+    setUser({ ...user, email: e.target.value });
   };
   const handlePassword = (e) => {
-  }; */
+    setUser({ ...user, password: e.target.value });
+  };
 
   const handleSubmit = async () => {
-    const body = JSON.stringify({
-      email: '@asth@gmail.com',
-      password: 'omaruwu',
-    });
-    console.log(body);
-    const response = await fetch('http://localhost:8080/api/auth/login', {
+    await fetch('http://localhost:8080/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body,
-    });
-    console.log(response.json());
+      body: JSON.stringify(user),
+    })
+      .then((response) => response)
+      .then((data) => setToken(data.headers.get('Authorization')));
   };
+
 
   return (
     <div className={styles.login}>
@@ -49,17 +51,17 @@ const Login = () => {
           labelPlaceholder='Email'
           width='13rem'
           value={user.email}
-          //onChange={(e) => handleEmail(e)}
+          onChange={(e) => handleEmail(e)}
         />
-        {/* {errorEmail && <Text color='red'>Email is required</Text>} */}
+        {errorEmail && <Text color='red'>Email is required</Text>}
         <Input.Password
           value={user.password}
           labelPlaceholder='Password'
           width='13rem'
-          //onChange={(e) => handlePassword(e)}
+          onChange={(e) => handlePassword(e)}
           initialValue=''
         />
-        {/* {errorPassword && <Text color='red'>Password is required</Text>} */}
+        {errorPassword && <Text color='red'>Password is required</Text>}
         <Button onClick={handleSubmit} style={{ backgroundColor: '#2b2a2a' }}>
           Login
         </Button>
