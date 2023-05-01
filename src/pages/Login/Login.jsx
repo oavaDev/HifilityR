@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
-import { Button, Input, Text } from '@nextui-org/react';
+import Buttonn from '../../components/Button/Button';
+import { Input, Text } from '@nextui-org/react';
 const Login = () => {
   const [user, setUser] = useState({
     email: '',
@@ -32,7 +33,6 @@ const Login = () => {
       .then((data) => setToken(data.headers.get('Authorization')));
   };
 
-
   return (
     <div className={styles.login}>
       <div className={styles.heroImg}>
@@ -62,9 +62,7 @@ const Login = () => {
           initialValue=''
         />
         {errorPassword && <Text color='red'>Password is required</Text>}
-        <Button onClick={handleSubmit} style={{ backgroundColor: '#2b2a2a' }}>
-          Login
-        </Button>
+        <Buttonn onClick={handleSubmit} label='Inicia sesión' />
       </div>
     </div>
   );

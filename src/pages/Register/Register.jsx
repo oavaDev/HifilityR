@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Register.module.css";
 import { Button, Input, Text } from "@nextui-org/react";
+import Buttonn from "../../components/Button/Button";
 const Register = () => {
   const [user, setUser] = useState({
     name: '',
@@ -84,9 +85,7 @@ const Register = () => {
           initialValue=''
         />
         {/* {errorPassword && <Text color='red'>Password is required</Text>} */}
-        <Button onClick={handleRegister} style={{ backgroundColor: '#2b2a2a' }}>
-          Register
-        </Button>
+        <Buttonn onClick={handleRegister} label="register"/>
       </div>
     </div>
   );

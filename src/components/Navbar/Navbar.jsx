@@ -11,7 +11,7 @@ const Nav = () => {
   return (
     <Navbar isBordered variant='sticky'>
       <Navbar.Brand>
-        <Navbar.Toggle aria-label='toggle navigation' hideIn='md' />
+        <Navbar.Toggle aria-label='toggle navigation' showIn={'sm'} />
         <Spacer y={1} />
         <Icon />
         <Spacer y={1} />
@@ -38,7 +38,7 @@ const Nav = () => {
           </Navbar.Link>
         </Navbar.Item>
       </Navbar.Content>
-      <Navbar.Collapse>
+      <Navbar.Collapse style={{ zIndex: '40' }}>
         {navbar.map((item, index) => (
           <Navbar.CollapseItem key={item}>
             <Link
