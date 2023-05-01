@@ -1,32 +1,31 @@
 import React, { useState } from "react";
 import styles from "./Register.module.css";
 import { Button, Input, Text } from "@nextui-org/react";
-const Login = () => {
+const Register = () => {
   const [user, setUser] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    password: "",
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    password: '',
   });
 
-  /*  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
 
-  const handleEmail = (e) => {
+  const handleInput = (e) => {
+    const field = e.target.id;
+    setUser({ ...user, [field]: e.target.value });
   };
-  const handlePassword = (e) => {
-  }; */
 
-  const handleSubmit = async () => {
-    const response = await fetch("http://localhost:8080/api/auth/login", {
-      method: "POST",
+  const handleRegister = async () => {
+    await fetch('http://localhost:8080/api/auth/register', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(user),
     });
-    console.log(response.json());
   };
 
   return (
@@ -40,7 +39,7 @@ const Login = () => {
       <div className={styles.form}>
         <div>
           <Text h1>Hifility</Text>
-          <Text h3 style={{ textAlign: "center" }}>
+          <Text h3 style={{ textAlign: 'center' }}>
             Registro
           </Text>
         </div>
@@ -48,44 +47,49 @@ const Login = () => {
           labelPlaceholder='Nombre'
           width='13rem'
           value={user.nombre}
-          //onChange={(e) => handleEmail(e)}
+          id='name'
+          onChange={(e) => handleInput(e)}
         />
         {/* {errorname && <Text color='red'>Nombre is required</Text>} */}
         <Input
           labelPlaceholder='Celular'
           width='13rem'
+          id='phone'
           value={user.phone}
-          //onChange={(e) => handleEmail(e)}
+          onChange={(e) => handleInput(e)}
         />
         {/* {errorphone && <Text color='red'>Phone is required</Text>} */}
         <Input
           labelPlaceholder='Dirección'
           width='13rem'
+          id='address'
           value={user.address}
-          //onChange={(e) => handleEmail(e)}
+          onChange={(e) => handleInput(e)}
         />
         {/* {erroraddress && <Text color='red'>Address is required</Text>} */}
         <Input
           labelPlaceholder='Email'
           width='13rem'
+          id='email'
           value={user.email}
-          //onChange={(e) => handleEmail(e)}
+          onChange={(e) => handleInput(e)}
         />
         {/* {errorEmail && <Text color='red'>Email is required</Text>} */}
         <Input.Password
           value={user.password}
           labelPlaceholder='Password'
           width='13rem'
-          //onChange={(e) => handlePassword(e)}
+          id='password'
+          onChange={(e) => handleInput(e)}
           initialValue=''
         />
         {/* {errorPassword && <Text color='red'>Password is required</Text>} */}
-        <Button onClick={handleSubmit} style={{ backgroundColor: "#2b2a2a" }}>
-          Login
+        <Button onClick={handleRegister} style={{ backgroundColor: '#2b2a2a' }}>
+          Register
         </Button>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;
