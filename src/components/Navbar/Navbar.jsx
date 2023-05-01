@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Navbar.module.css';
-import { Navbar, Button, Text, Spacer } from '@nextui-org/react';
+import { Navbar, Text, Spacer } from '@nextui-org/react';
 import Icon from '../Icon';
 const Nav = () => {
   const navbar = [
@@ -40,7 +39,7 @@ const Nav = () => {
       </Navbar.Content>
       <Navbar.Collapse style={{ zIndex: '40' }}>
         {navbar.map((item, index) => (
-          <Navbar.CollapseItem key={item}>
+          <Navbar.CollapseItem key={index}>
             <Link
               color='black'
               css={{
