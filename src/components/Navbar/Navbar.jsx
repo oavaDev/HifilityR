@@ -18,7 +18,7 @@ const Nav = () => {
           Hifility
         </Text>
       </Navbar.Brand>
-      <Navbar.Content enableCursorHighlight hideIn='xs' variant='underline'>
+      <Navbar.Content enableCursorHighlight hideIn='sm'  variant='underline'>
         {navbar.map((item, i) => {
           return (
             <Navbar.Link key={i} href={item.path}>

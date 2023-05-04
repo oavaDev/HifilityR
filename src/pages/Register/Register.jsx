@@ -85,7 +85,7 @@ const Register = () => {
           initialValue=''
         />
         {/* {errorPassword && <Text color='red'>Password is required</Text>} */}
-        <Buttonn onClick={handleRegister} label="register"/>
+        <Buttonn onClick={handleRegister} label="Register"/>
       </div>
     </div>
   );
