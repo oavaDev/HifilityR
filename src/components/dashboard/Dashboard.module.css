@@ -1,5 +1,6 @@
 .dashboard{
     display: flex;
+    position: fixed;
     flex-direction: column;
     width: auto;
     gap: 2rem;

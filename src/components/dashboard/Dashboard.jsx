@@ -15,7 +15,7 @@ const Dashboard = () => {
   const ref = useRef(null);
   const items = [
     {
-      name: 'Home',
+      name: 'Inicio',
       path: '/',
       icon: <AiOutlineHome />,
     },
