@@ -1,18 +1,22 @@
 .dashboard{
     display: flex;
-    position: fixed;
+    position:fixed;
     flex-direction: column;
     width: auto;
     gap: 2rem;
     background-color: rgb(232, 232, 232);
-    height: 90vh;
+    height: 100vh;
     justify-content: space-between;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     transition: all 0.3s linear;
+    overflow-x: hidden;
+    z-index: 20;
+    cursor: pointer;
 }
 
 .items{
     display: flex;
+    margin: 0.5rem;
     flex-direction: column;
     text-decoration: none;
     text-align: center;

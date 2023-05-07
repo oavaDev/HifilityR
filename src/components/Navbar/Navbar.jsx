@@ -42,10 +42,10 @@ const Nav = () => {
           <Navbar.CollapseItem key={index}>
             <Link
               color='black'
-              css={{
-                minWidth: '100%',
+              style={{
+                color: 'black',
               }}
-              href={item.path}
+              to={item.path}
             >
               {item.name}
             </Link>

@@ -37,6 +37,7 @@ const Dashboard = () => {
   ];
   return (
     <div
+      onClick={() => (open === false ? setOpen(true) : setOpen(false))}
       style={{
         transition: 'all .5s linear',
       }}

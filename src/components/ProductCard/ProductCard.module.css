@@ -1,6 +1,5 @@
 .ProductCard__body {
     width: 15rem;
-    margin: 1rem 2rem;
     display: flex;
     flex-direction: column;
     border-radius: 30px;
