@@ -1,9 +1,18 @@
 .home {
     display: flex;
     margin-left: 4rem;
+
+
 }
 .home_news{
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
+
+ /* Extra large devices (large laptops and desktops, 1200px and up) */
+ @media only screen and (min-width: 1200px) {
+    .home_news{
+        width: calc(100vw - 4rem);
+    }
+ } 

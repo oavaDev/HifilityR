@@ -9,7 +9,7 @@ const Nav = () => {
   ];
 
   return (
-    <Navbar isBordered variant='sticky'>
+    <Navbar isBordered variant='sticky' maxWidth={'fluid'}>
       <Navbar.Brand>
         <Navbar.Toggle aria-label='toggle navigation' showIn={'sm'} />
         <Spacer y={1} />
