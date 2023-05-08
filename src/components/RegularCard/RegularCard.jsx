@@ -1,8 +1,10 @@
 import React from 'react';
 import { Card, Text, Col } from '@nextui-org/react';
+import styles from './RegularCard.module.css';
 const RegularCard = ({ subtitle, title, img, footer, width, height }) => {
   return (
     <Card
+      className={styles.RegularCard_body}
       css={{ w: `${width ? width : '100%'}`, h: `${height ? height : null}` }}
     >
       <Card.Header css={{ position: 'absolute', zIndex: 1, top: 5 }}>
