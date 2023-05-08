@@ -7,6 +7,7 @@ const Nav = () => {
     { name: 'Home', path: '/' },
     { name: 'Productos', path: '/products' },
   ];
+
   return (
     <Navbar isBordered variant='sticky'>
       <Navbar.Brand>
@@ -18,15 +19,6 @@ const Nav = () => {
           Hifility
         </Text>
       </Navbar.Brand>
-      <Navbar.Content enableCursorHighlight hideIn='sm' variant='underline'>
-        {navbar.map((item, i) => {
-          return (
-            <Navbar.Link key={i} href={item.path}>
-              {item.name}
-            </Navbar.Link>
-          );
-        })}
-      </Navbar.Content>
       <Navbar.Content>
         <Navbar.Link color='inherit' href='/login'>
           Inicia sesión
@@ -40,13 +32,7 @@ const Nav = () => {
       <Navbar.Collapse style={{ zIndex: '40' }}>
         {navbar.map((item, index) => (
           <Navbar.CollapseItem key={index}>
-            <Link
-              color='black'
-              style={{
-                color: 'black',
-              }}
-              to={item.path}
-            >
+            <Link style={{ color: 'black' }} color='inherit' to={item.path}>
               {item.name}
             </Link>
           </Navbar.CollapseItem>

@@ -12,6 +12,22 @@ import { BsHeadphones } from 'react-icons/bs';
 import { BiUser } from 'react-icons/bi';
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
+  const handleOpen = (id) => {
+    let item = id;
+    if (item === 'dashboard__item' && open) {
+      setOpen(false);
+    }
+    if (item === 'dashboard__item' && !open) {
+      setOpen(true);
+    }
+    if (item === 'dashboard' && !open) {
+      setOpen(true);
+    }
+    if (item === 'dashboard' && open) {
+      setOpen(false);
+    }
+  };
+
   const ref = useRef(null);
   const items = [
     {
@@ -37,10 +53,11 @@ const Dashboard = () => {
   ];
   return (
     <div
-      onClick={() => (open === false ? setOpen(true) : setOpen(false))}
+      onClick={(e) => handleOpen(e.target.id)}
       style={{
         transition: 'all .5s linear',
       }}
+      id='dashboard'
       className={styles.dashboard}
     >
       <div
@@ -48,19 +65,14 @@ const Dashboard = () => {
           width: `${open ? 'auto' : '3rem'}`,
           transition: 'all .5s linear',
         }}
+        id='dashboard__item'
         ref={ref}
         className={styles.items}
       >
         {!open ? (
-          <AiFillBook
-            size={25}
-            onClick={() => (open === false ? setOpen(true) : setOpen(false))}
-          />
+          <AiFillBook size={25} onClick={(e) => handleOpen(e.target.id)} />
         ) : (
-          <BsBook
-            size={25}
-            onClick={() => (open === false ? setOpen(true) : setOpen(false))}
-          />
+          <BsBook size={25} onClick={(e) => handleOpen(e.target.id)} />
         )}
         {open ? (
           <div>Username</div>
@@ -73,19 +85,20 @@ const Dashboard = () => {
           ? items.map((item, i) => {
               return (
                 <Link
+                  id='dashboard__item'
                   style={{ display: 'flex', gap: '1rem' }}
                   key={i}
                   to={item.path}
                 >
-                  <div>{item.icon}</div>
-                  <div>{item.name}</div>
+                  <div id='dashboard__item'>{item.icon}</div>
+                  <div id='dashboard__item'>{item.name}</div>
                 </Link>
               );
             })
           : items.map((item) => {
               return (
-                <Link key={item.name} to={item.path}>
-                  <div>{item.icon}</div>
+                <Link id='dashboard__item' key={item.name} to={item.path}>
+                  <div id='dashboard__item'>{item.icon}</div>
                 </Link>
               );
             })}
