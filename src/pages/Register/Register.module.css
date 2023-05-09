@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   max-width: 80rem;
-  border-radius: 20px;
+  width: 100%;
 }
 
 .heroImg {
@@ -31,7 +31,7 @@
   .login {
     display: flex;
     flex-direction: column;
-    margin: 2rem;
+    margin-left: 4rem;
   }
   .heroImg {
     display: none;
@@ -52,6 +52,9 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  .login{
+    border-radius: 20px;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */

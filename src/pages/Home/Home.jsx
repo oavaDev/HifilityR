@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Home.module.css';
 import RegularCard from '../../components/RegularCard/RegularCard';
+import FullProductCard from "../../components/FullProductCard/FullProductCard"
 const Home = () => {
   return (
     <div className={styles.home}>
@@ -10,6 +11,7 @@ const Home = () => {
           img={
             'https://cdn.shopify.com/s/files/1/0040/7201/3924/files/home-cadenza-min.jpg?v=1681121730'
           }
+          width={"50%"}
         />
         <RegularCard
           subtitle={'Nuevos in-ears en camino'}
@@ -17,6 +19,7 @@ const Home = () => {
           img={
             'https://cdn.shopify.com/s/files/1/0040/7201/3924/files/home-monarch-min.jpg?v=1681121810'
           }
+          width={"44%"}
         />
         <RegularCard
           subtitle={'Lo nuevo de TRN '}
@@ -24,8 +27,8 @@ const Home = () => {
           img={
             'https://cdn.shopify.com/s/files/1/0040/7201/3924/files/IMG_0684.jpg?v=1662538594'
           }
-          height={'30%'}
         />
+        
       </div>
     </div>
   );

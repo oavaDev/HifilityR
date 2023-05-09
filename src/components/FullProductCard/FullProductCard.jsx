@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './FullProductCards.module.css';
+import styles from './FullProductCard.module.css';
 import { Text, Button } from '@nextui-org/react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 

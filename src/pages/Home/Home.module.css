@@ -6,8 +6,10 @@
 }
 .home_news{
     display: flex;
-    flex-direction: column;
     gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
  /* Extra large devices (large laptops and desktops, 1200px and up) */
