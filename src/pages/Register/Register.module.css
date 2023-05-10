@@ -4,8 +4,8 @@
   margin: auto;
   align-items: center;
   justify-content: center;
-  max-width: 80rem;
-  width: 100%;
+  max-width: 8rem;
+  border-radius: 20px;
 }
 
 .heroImg {
@@ -52,7 +52,7 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .login{
+  .login {
     border-radius: 20px;
   }
 }

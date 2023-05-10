@@ -1,60 +1,71 @@
-.login{
-    background-color: #efefef;
+.login {
+  background-color: #efefef;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  max-width: 80rem;
+  width: 100%;
+  height: 100vh;
+}
+
+.heroImg {
+  position: relative;
+  width: 60%;
+}
+.heroImg img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.form {
+  width: 40%;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .login {
     display: flex;
-    margin: auto;
-    align-items: center;
-    justify-content: center;
-    max-width: 80rem;
-    border-radius: 20px;
-}
-
-.heroImg{
-    position: relative;
-    width: 60%;
-}
-.heroImg img{
-    width: 100%;
-    border-radius: 20px;
-
-}
-
-.form{
-    width: 40%;
-    display: flex;
-    gap: 2rem;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    margin-left: 4rem;
+  }
+  .heroImg {
+    display: none;
+  }
 
-
- /* Extra small devices (phones, 600px and down) */
- @media only screen and (max-width: 600px) {
-    .login{
-        display: flex;
-        flex-direction: column;
-        margin: 2rem;
-    }
-    .heroImg{
-        display: none;
-    }
-    
-.form{
+  .form {
     margin: 1rem;
+  }
 }
 
- }
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
 
- /* Small devices (portrait tablets and large phones, 600px and up) */
- @media only screen and (min-width: 600px) {
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
 
- }
- 
- /* Medium devices (landscape tablets, 768px and up) */
- @media only screen and (min-width: 768px) {}
- 
- /* Large devices (laptops/desktops, 992px and up) */
- @media only screen and (min-width: 992px) {}
- 
- /* Extra large devices (large laptops and desktops, 1200px and up) */
- @media only screen and (min-width: 1200px) {} 
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .login {
+    height: auto; /* Quita la altura fija para que se ajuste al contenido */
+    flex-direction: row; /* Cambia la dirección de flexión a horizontal */
+  }
+
+  .heroImg {
+    width: 40%; /* Redefine el ancho de la imagen */
+  }
+
+  .form {
+    width: 60%; /* Redefine el ancho del formulario */
+  }
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+  }
+}
