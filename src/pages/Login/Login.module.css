@@ -43,7 +43,7 @@
     justify-content: center;
     align-items: center;
 }
-
+}
 
  /* Extra small devices (phones, 600px and down) */
  @media only screen and (max-width: 600px) {
@@ -77,18 +77,7 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .login {
-    height: auto; /* Quita la altura fija para que se ajuste al contenido */
-    flex-direction: row; /* Cambia la dirección de flexión a horizontal */
-  }
-
-  .heroImg {
-    width: 40%; /* Redefine el ancho de la imagen */
-  }
-
-  .form {
-    width: 60%; /* Redefine el ancho del formulario */
-  }
+  
   /* Extra large devices (large laptops and desktops, 1200px and up) */
   @media only screen and (min-width: 1200px) {
   }
