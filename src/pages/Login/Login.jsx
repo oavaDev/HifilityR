@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import styles from './Login.module.css';
-import Buttonn from '../../components/Button/Button';
-import { Input, Text } from '@nextui-org/react';
+import React, { useState } from "react";
+import styles from "./Login.module.css";
+import Buttonn from "../../components/Button/Button";
+import { Input, Text } from "@nextui-org/react";
 const Login = () => {
   const [user, setUser] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const [data, setData] = useState();
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
 
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
@@ -22,15 +22,15 @@ const Login = () => {
   };
 
   const handleSubmit = async () => {
-    await fetch('http://localhost:8080/api/auth/login', {
-      method: 'POST',
+    await fetch("http://localhost:8080/api/auth/login", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
     })
       .then((response) => response)
-      .then((data) => setToken(data.headers.get('Authorization')));
+      .then((data) => setToken(data.headers.get("Authorization")));
   };
 
   return (
