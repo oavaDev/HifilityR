@@ -13,6 +13,7 @@ function App() {
   return (
     <>
       <Navbar />
+
       <div className={styles.main}>
         {path === '/login' || path === '/register' ? null : <Dashboard />}
         <Routes>
