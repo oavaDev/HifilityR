@@ -1,21 +1,20 @@
 .login{
-    background-color: #efefef;
-    display: flex;
-    margin: auto;
-    align-items: center;
-    justify-content: center;
-    max-width: 80rem;
-    border-radius: 20px;
+  background-color: #efefef;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 5rem);
 }
 
-.heroImg{
-    position: relative;
-    width: 60%;
+.heroImg {
+  position: relative;
+  width: 50%;
 }
-.heroImg img{
-    width: 100%;
-    border-radius: 20px;
-
+.heroImg img {
+  width: 100%;
+  border-radius: 20px;
 }
 
 .form{
@@ -33,7 +32,6 @@
     .login{
         display: flex;
         flex-direction: column;
-        margin: 2rem;
     }
     .heroImg{
         display: none;

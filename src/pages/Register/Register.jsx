@@ -30,7 +30,7 @@ const Register = () => {
   };
 
   return (
-    <div className={styles.login}>
+    <div className={styles.register}>
       <div className={styles.heroImg}>
         <img
           src='https://res.cloudinary.com/dj80e8qqp/image/upload/v1668620919/657417-867137095_m1i39p.jpg'
@@ -85,7 +85,7 @@ const Register = () => {
           initialValue=''
         />
         {/* {errorPassword && <Text color='red'>Password is required</Text>} */}
-        <Buttonn onClick={handleRegister} label="register"/>
+        <Buttonn onClick={handleRegister} label='register' />
       </div>
     </div>
   );

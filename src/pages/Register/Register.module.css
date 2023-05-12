@@ -1,21 +1,22 @@
-.login {
+.register {
   background-color: #efefef;
   display: flex;
   margin: auto;
   align-items: center;
   justify-content: center;
-  max-width: 80rem;
   width: 100%;
+  height: calc(100vh - 5rem);
 }
 
 .heroImg {
   position: relative;
-  width: 60%;
+  width: 50%;
 }
 .heroImg img {
   width: 100%;
   border-radius: 20px;
 }
+
 
 .form {
   width: 40%;
@@ -31,7 +32,7 @@
   .login {
     display: flex;
     flex-direction: column;
-    margin-left: 4rem;
+    height: calc(100vh - 5rem);
   }
   .heroImg {
     display: none;
