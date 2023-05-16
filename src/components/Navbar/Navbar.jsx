@@ -19,11 +19,11 @@ const Nav = () => {
           Hifility
         </Text>
       </Navbar.Brand>
-      <Navbar.Content>
+      <Navbar.Content as={'span'}>
         <Navbar.Link color='inherit' href='/login'>
           Inicia sesión
         </Navbar.Link>
-        <Navbar.Item>
+        <Navbar.Item as={'span'}>
           <Navbar.Link color='inherit' href='/register'>
             Registro
           </Navbar.Link>

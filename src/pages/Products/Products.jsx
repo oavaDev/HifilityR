@@ -1,7 +1,8 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import styles from './Products.module.css';
-const data = [
+
+/* const data = [
   {
     _id: { $oid: '6457ec81c64ccd5dca320389' },
     image:
@@ -249,24 +250,46 @@ const data = [
     },
     __v: { $numberInt: '0' },
   },
-];
+]; */
 
 const Products = () => {
+  const [data, setData] = useState([]);
+
+  const token =
+    'Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhc3RoQGdtYWlsLmNvbSIsImV4cCI6MTY4Njc4ODA0OCwibm9tYnJlIjoiYnJleW5lciJ9.4NUmQXbN511UVfgal1naU5EKtz_QsPMWKuJ41fGaLoh9FaC5AH_DZ2671Vjs7CUY';
+  const retrieveData = async () => {
+    const info = await fetch('http://localhost:8080/api/products', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => setData(data));
+    return info;
+  };
+
+  useEffect(() => {
+    retrieveData();
+  }, []);
   return (
     <div className={styles.ProductWrapper}>
-      {data.map((item) => {
-        return (
-          <ProductCard
-            image={item.image}
-            brand={item.brand}
-            name={item.name}
-            subtitle={item.subtitle}
-            price={item.price}
-            description={item.description}
-            rating={item.rating}
-          />
-        );
-      })}
+      {data &&
+        data.map((item) => {
+          return (
+            <ProductCard
+              key={item.id}
+              image={item.image}
+              brand={item.brand}
+              name={item.name}
+              subtitle={item.subtitle}
+              price={item.price}
+              description={item.description}
+              rating={item.rating}
+            />
+          );
+        })}
     </div>
   );
 };

@@ -9,7 +9,6 @@ import Products from './pages/Products/Products';
 function App() {
   const location = useLocation();
   const path = location.pathname;
-  console.log(path);
   return (
     <>
       <Navbar />

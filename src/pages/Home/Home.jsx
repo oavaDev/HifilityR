@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Home.module.css';
 import RegularCard from '../../components/RegularCard/RegularCard';
-import FullProductCard from "../../components/FullProductCard/FullProductCard"
 const Home = () => {
   return (
     <div className={styles.home}>

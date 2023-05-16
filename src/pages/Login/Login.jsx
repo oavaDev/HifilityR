@@ -10,7 +10,7 @@ const Login = () => {
 
   const [data, setData] = useState();
   const [token, setToken] = useState("");
-
+  token && console.log(token);
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
 
@@ -21,16 +21,17 @@ const Login = () => {
     setUser({ ...user, password: e.target.value });
   };
 
-  const handleSubmit = async () => {
-    await fetch("http://localhost:8080/api/auth/login", {
-      method: "POST",
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await fetch('http://localhost:8080/api/auth/login', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(user),
     })
       .then((response) => response)
-      .then((data) => setToken(data.headers.get("Authorization")));
+      .then((data) => setToken(data.headers.get('Authorization')));
   };
 
   return (
@@ -46,23 +47,24 @@ const Login = () => {
           <Text h1>Hifility</Text>
           <Text h3>Inicia sesión</Text>
         </div>
-
-        <Input
-          labelPlaceholder='Email'
-          width='13rem'
-          value={user.email}
-          onChange={(e) => handleEmail(e)}
-        />
-        {errorEmail && <Text color='red'>Email is required</Text>}
-        <Input.Password
-          value={user.password}
-          labelPlaceholder='Password'
-          width='13rem'
-          onChange={(e) => handlePassword(e)}
-          initialValue=''
-        />
-        {errorPassword && <Text color='red'>Password is required</Text>}
-        <Buttonn onClick={handleSubmit} label='Inicia sesión' />
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <Input
+            labelPlaceholder='Email'
+            width='13rem'
+            value={user.email}
+            onChange={(e) => handleEmail(e)}
+          />
+          {errorEmail && <Text color='red'>Email is required</Text>}
+          <Input.Password
+            value={user.password}
+            labelPlaceholder='Password'
+            width='13rem'
+            onChange={(e) => handlePassword(e)}
+            initialValue=''
+          />
+          {errorPassword && <Text color='red'>Password is required</Text>}
+          <Buttonn label='Inicia sesión' />
+        </form>
       </div>
     </div>
   );
