@@ -4,22 +4,34 @@ import Navbar from './components/Navbar/Navbar';
 import Dashboard from './components/dashboard/Dashboard';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Products from './pages/Products/Products';
 function App() {
-  const location = useLocation();
-  const path = location.pathname;
+  const isLogged =
+    localStorage.getItem('token') &&
+    localStorage.getItem('token') !== 'null' &&
+    localStorage.getItem('token').length > 1
+      ? true
+      : false;
+
+  console.log(isLogged);
   return (
     <>
-      <Navbar />
+      <Navbar isLogged={isLogged} />
 
       <div className={styles.main}>
-        {path === '/login' || path === '/register' ? null : <Dashboard />}
+        {isLogged && <Dashboard />}
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/products' element={<Products />} />
+          <Route path='/' element={isLogged ? <Home /> : <Login />} />
+          <Route path='/login' element={isLogged ? <Home /> : <Login />} />
+          <Route
+            path='/register'
+            element={isLogged ? <Register /> : <Login />}
+          />
+          <Route
+            path='/products'
+            element={isLogged ? <Products /> : <Login />}
+          />
         </Routes>
       </div>
     </>

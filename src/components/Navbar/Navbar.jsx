@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Text, Spacer } from '@nextui-org/react';
 import Icon from '../Icon';
-const Nav = () => {
+const Nav = ({ islogged }) => {
   const navbar = [
     { name: 'Home', path: '/' },
     { name: 'Productos', path: '/products' },
@@ -19,16 +19,19 @@ const Nav = () => {
           Hifility
         </Text>
       </Navbar.Brand>
-      <Navbar.Content as={'span'}>
-        <Navbar.Link color='inherit' href='/login'>
-          Inicia sesión
-        </Navbar.Link>
-        <Navbar.Item as={'span'}>
-          <Navbar.Link color='inherit' href='/register'>
-            Registro
+      {islogged && (
+        <Navbar.Content as={'span'}>
+          <Navbar.Link color='inherit' href='/login'>
+            Inicia sesión
           </Navbar.Link>
-        </Navbar.Item>
-      </Navbar.Content>
+          <Navbar.Item as={'span'}>
+            <Navbar.Link color='inherit' href='/register'>
+              Registro
+            </Navbar.Link>
+          </Navbar.Item>
+        </Navbar.Content>
+      )}
+
       <Navbar.Collapse style={{ zIndex: '40' }}>
         {navbar.map((item, index) => (
           <Navbar.CollapseItem key={index}>

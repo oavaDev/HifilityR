@@ -8,7 +8,6 @@ const Login = () => {
     password: "",
   });
 
-  const [data, setData] = useState();
   const [token, setToken] = useState("");
   token && console.log(token);
   const [errorEmail, setErrorEmail] = useState(false);
@@ -23,6 +22,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    
     await fetch('http://localhost:8080/api/auth/login', {
       method: 'POST',
       headers: {
@@ -31,7 +31,12 @@ const Login = () => {
       body: JSON.stringify(user),
     })
       .then((response) => response)
-      .then((data) => setToken(data.headers.get('Authorization')));
+      .then((data) => {
+        setToken(data.headers.get('Authorization'));
+        localStorage.setItem('token', data.headers.get('Authorization'));
+        console.log(data.headers.get('Authorization'));
+        window.location.href = '/';
+      });
   };
 
   return (
