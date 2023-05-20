@@ -1,14 +1,19 @@
 .FullProductCard__body {
     display: flex;
-    max-width: 50rem;
-    margin: 8rem auto;
+    width: 100%;
+    max-width: 100rem;
+    height: 92vh;
+    margin:auto;
+    justify-content: center;
+    align-items: center;
     border-radius: 30px;
-    background: #f0f0f0;
+    background: #ffffff;
     box-shadow: 28px 28px 57px #c1c1c1, 57px #ffffff;
   }
   
   .FullProductCard__body_image {
     min-width: 3rem;
+    width: 25rem;
     margin: auto;
     align-items: center;
   }
@@ -71,6 +76,6 @@
   @media (max-width: 650px) {
     .FullProductCard__body {
       flex-direction: column;
-      margin: 4rem auto;
-    }
+      margin-left: 4rem;
+      }
   }

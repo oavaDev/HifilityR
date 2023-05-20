@@ -2,14 +2,51 @@ import React from 'react';
 import styles from './ProductCard.module.css';
 import { Text, Button } from '@nextui-org/react';
 import CartIcon from '../CartIcon/CartIcon';
+import { useDispatch } from 'react-redux';
+import { addToOrder } from '../../store/orderSlice';
+import { useNavigate } from 'react-router-dom';
 
-const ProductCard = ({ image, brand, name, price }) => {
+const ProductCard = ({
+  id,
+  image,
+  brand,
+  name,
+  price,
+  quantity,
+  subtitle,
+  description,
+}) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const data = {
+    id,
+    image,
+    brand,
+    name,
+    price,
+    quantity,
+    subtitle,
+    description,
+  };
+  const addOrderHandler = () => {
+    dispatch(
+      addToOrder({
+        id,
+        image,
+        brand,
+        name,
+        price,
+        quantity,
+        subtitle,
+        description,
+      })
+    );
+    navigate(`/products/${id}`, { state: data });
+  };
+
   return (
     <div className={styles.ProductCard__body}>
-      <div
-        /* onClick={() => router.push(`/products/${id}`)} */
-        className={styles.ProductCard__body_image}
-      >
+      <div className={styles.ProductCard__body_image}>
         <img
           alt='img'
           style={{
@@ -59,12 +96,11 @@ const ProductCard = ({ image, brand, name, price }) => {
         </div>
         <div className={styles.cart_button}>
           <Button
-            /* onClick={addOrderHandler} */
+            onClick={addOrderHandler}
             className={styles.cart_button_button}
             color={'black'}
             auto
             flat
-            /* as={Link} */
           >
             <CartIcon />
           </Button>

@@ -4,72 +4,6 @@ import styles from './Products.module.css';
 
 /* const data = [
   {
-    _id: { $oid: '6457ec81c64ccd5dca320389' },
-    image:
-      'http://cdn.shopify.com/s/files/1/0040/7201/3924/products/7HZTimeless-2_3d709844-2bea-4125-938e-61febf3e320f_300x.jpg?v=1635258287',
-    brand: '7HZ',
-    name: 'Timeless',
-    subtitle: '14.2mm Planar HiFi In-ear Earphone ',
-    price: '109',
-    description: [
-      'Adopts Double-sided Array N52 Magnet and Ultra-thin Diaphragm',
-      '14.2mm Planar Driver',
-      'CNC Aluminum Shell',
-      'Detachable MMCX Cable',
-      'Lightweight and Comfortable',
-    ],
-    rating: ['20', '3'],
-    createdAt: { $date: { $numberLong: '1667535709306' } },
-    updatedAt: { $date: { $numberLong: '1667535709306' } },
-    __v: { $numberInt: '0' },
-  },
-  {
-    _id: { $oid: '6457f7e7914207e3f914c7e4' },
-    image:
-      'https://cdn.shopify.com/s/files/1/0040/7201/3924/products/KZ-ZSNPRO-IEM-1.jpg?v=1567348966',
-    brand: 'KZ',
-    name: 'ZSN PRO',
-    subTitle: '1BA+1DD HiFi Hybrid Dual Driver In Ear Earbuds',
-    price: '17.85',
-    description: [
-      'Improved Hybrid Drivers',
-      'Exquisite Metal and Resin Design',
-      'Improved 0.75mm 2 Pin Detachable Cable',
-      'Ergonomic Design for Stable Wear',
-    ],
-    rating: ['20', '3'],
-    createdAt: {
-      $date: { $numberLong: '1667537126803' },
-    },
-    updatedAt: {
-      $date: { $numberLong: '1667537126803' },
-    },
-    __v: { $numberInt: '0' },
-  },
-  {
-    _id: { $oid: '6457f808914207e3f914c7e5' },
-    image:
-      'https://cdn.shopify.com/s/files/1/0040/7201/3924/products/1_53678b0c-66f3-4956-901b-6b3061135eb3.jpg?v=1664357042',
-    brand: 'MOONDROP',
-    name: 'Stellaris',
-    subTitle: 'Outstanding 14.5mm Planar Driver In-Ear Monitor',
-    price: '93.49',
-    description: [
-      'High-Precision Sub-Nanometer Driver Diaphragm',
-      'Fully Symmetrical Magnetic Circuit',
-      'Exquisite Starry Sky Theme Appearance',
-      'Comfortable Liquid Silicone Ear Tips',
-    ],
-    rating: ['20', '3'],
-    createdAt: {
-      $date: { $numberLong: '1667600169242' },
-    },
-    updatedAt: {
-      $date: { $numberLong: '1667600169242' },
-    },
-    __v: { $numberInt: '0' },
-  },
-  {
     _id: { $oid: '6457f82e914207e3f914c7e6' },
     image:
       'https://cdn.shopify.com/s/files/1/0040/7201/3924/products/1_9_1818e743-5e56-4081-8837-7aff1cfcb675.jpg?v=1656312717',
@@ -252,11 +186,9 @@ import styles from './Products.module.css';
   },
 ]; */
 
-const Products = () => {
+const Products = ({ token }) => {
   const [data, setData] = useState([]);
 
-  const token =
-    'Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhc3RoQGdtYWlsLmNvbSIsImV4cCI6MTY4Njc4ODA0OCwibm9tYnJlIjoiYnJleW5lciJ9.4NUmQXbN511UVfgal1naU5EKtz_QsPMWKuJ41fGaLoh9FaC5AH_DZ2671Vjs7CUY';
   const retrieveData = async () => {
     const info = await fetch('http://localhost:8080/api/products', {
       method: 'GET',
@@ -280,10 +212,12 @@ const Products = () => {
           return (
             <ProductCard
               key={item.id}
+              id={item.id}
               image={item.image}
               brand={item.brand}
               name={item.name}
               subtitle={item.subtitle}
+              quantity={item.quantity}
               price={item.price}
               description={item.description}
               rating={item.rating}
