@@ -36,6 +36,7 @@ export const orderSlice = createSlice({
 });
 
 export const { addToOrder, removeFromOrder } = orderSlice.actions;
+export const itemsInCart = (state) => state.order.cart.cartItems;
 export const selectTotal = (state) =>
   state.order.cart.cartItems.reduce(
     (total, item) => total + item.price * item.quantity,

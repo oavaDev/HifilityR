@@ -10,7 +10,12 @@ import {
 import { BsBook } from 'react-icons/bs';
 import { BsHeadphones } from 'react-icons/bs';
 import { BiUser } from 'react-icons/bi';
+import { useSelector } from 'react-redux';
+import { itemsInCart } from '../../store/orderSlice';
+import CartInfo from '../Cart/CartInfo/CartInfo';
 const Dashboard = () => {
+  const cartItems = useSelector(itemsInCart);
+  console.log(cartItems);
   const [open, setOpen] = useState(false);
   const handleOpen = (id) => {
     let item = id;
@@ -99,6 +104,9 @@ const Dashboard = () => {
               return (
                 <Link id='dashboard__item' key={item.name} to={item.path}>
                   <div id='dashboard__item'>{item.icon}</div>
+                  {item.name === 'Carrito' && (
+                    <CartInfo cartItems={cartItems} />
+                  )}
                 </Link>
               );
             })}

@@ -1,10 +1,9 @@
 import React from 'react';
 import styles from './ProductCard.module.css';
 import { Text, Button } from '@nextui-org/react';
-import CartIcon from '../CartIcon/CartIcon';
-import { useDispatch } from 'react-redux';
-import { addToOrder } from '../../store/orderSlice';
+import CartIcon from '../Cart/CartIcon/CartIcon';
 import { useNavigate } from 'react-router-dom';
+import Cart from '../Cart/Cart';
 
 const ProductCard = ({
   id,
@@ -16,7 +15,6 @@ const ProductCard = ({
   subtitle,
   description,
 }) => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const data = {
     id,
@@ -27,10 +25,6 @@ const ProductCard = ({
     quantity,
     subtitle,
     description,
-  };
-  
-  const addOrderHandler = () => {
-    dispatch(addToOrder(data));
   };
 
   const clickHanler = () => {
@@ -87,17 +81,7 @@ const ProductCard = ({
             </Text>
           </div>
         </div>
-        <div className={styles.cart_button}>
-          <Button
-            onClick={addOrderHandler}
-            className={styles.cart_button_button}
-            color={'black'}
-            auto
-            flat
-          >
-            <CartIcon />
-          </Button>
-        </div>
+        <Cart data={data} />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import styles from './FullProductCard.module.css';
 import { Text, Button } from '@nextui-org/react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { useLocation } from 'react-router-dom';
+import Cart from '../Cart/Cart';
 
 const ProductCards = () => {
   const location = useLocation();
@@ -92,16 +93,7 @@ const ProductCards = () => {
             </Text>
           </div>
         </div>
-        <div className={styles.cart_button}>
-          <Button
-            /* onClick={addOrderHandler} */
-            className={styles.cart_button_button}
-            flat
-            auto
-          >
-            <AiOutlineShoppingCart />
-          </Button>
-        </div>
+        <Cart data={location.state} />
       </div>
     </div>
   );
