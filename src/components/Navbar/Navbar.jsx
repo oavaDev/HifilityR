@@ -1,17 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Text, Spacer } from '@nextui-org/react';
+import { Navbar, Text, Spacer, Button } from '@nextui-org/react';
 import Icon from '../Icon';
 const Nav = ({ islogged }) => {
-  const navbar = [
-    { name: 'Home', path: '/' },
-    { name: 'Productos', path: '/products' },
-  ];
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/';
+  };
 
   return (
     <Navbar isBordered variant='sticky' maxWidth={'fluid'}>
       <Navbar.Brand>
-        <Navbar.Toggle aria-label='toggle navigation' showIn={'sm'} />
         <Spacer y={1} />
         <Icon />
         <Spacer y={1} />
@@ -19,7 +18,7 @@ const Nav = ({ islogged }) => {
           Hifility
         </Text>
       </Navbar.Brand>
-      {islogged && (
+      {islogged ? (
         <Navbar.Content as={'span'}>
           <Navbar.Link color='inherit' href='/login'>
             Inicia sesión
@@ -30,17 +29,18 @@ const Nav = ({ islogged }) => {
             </Navbar.Link>
           </Navbar.Item>
         </Navbar.Content>
+      ) : (
+        <Navbar.Content as={'span'}>
+          <Navbar.Item as={'span'}>
+            <Button
+              onClick={handleLogout}
+              style={{ backgroundColor: '#171717', fontStyle: 'bold' }}
+            >
+              Cerrar sesión
+            </Button>
+          </Navbar.Item>
+        </Navbar.Content>
       )}
-
-      <Navbar.Collapse style={{ zIndex: '40' }}>
-        {navbar.map((item, index) => (
-          <Navbar.CollapseItem key={index}>
-            <Link style={{ color: 'black' }} color='inherit' to={item.path}>
-              {item.name}
-            </Link>
-          </Navbar.CollapseItem>
-        ))}
-      </Navbar.Collapse>
     </Navbar>
   );
 };

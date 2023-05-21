@@ -28,24 +28,17 @@ const ProductCard = ({
     subtitle,
     description,
   };
+  
   const addOrderHandler = () => {
-    dispatch(
-      addToOrder({
-        id,
-        image,
-        brand,
-        name,
-        price,
-        quantity,
-        subtitle,
-        description,
-      })
-    );
+    dispatch(addToOrder(data));
+  };
+
+  const clickHanler = () => {
     navigate(`/products/${id}`, { state: data });
   };
 
   return (
-    <div className={styles.ProductCard__body}>
+    <div onClick={clickHanler} className={styles.ProductCard__body}>
       <div className={styles.ProductCard__body_image}>
         <img
           alt='img'
