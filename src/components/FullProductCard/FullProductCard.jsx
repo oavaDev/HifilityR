@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './FullProductCard.module.css';
-import { Text, Button } from '@nextui-org/react';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { Text} from '@nextui-org/react';
 import { useLocation } from 'react-router-dom';
 import Cart from '../Cart/Cart';
 

@@ -201,7 +201,6 @@ const Products = ({ token }) => {
       .then((data) => setData(data));
     return info;
   };
-
   useEffect(() => {
     retrieveData();
   }, []);

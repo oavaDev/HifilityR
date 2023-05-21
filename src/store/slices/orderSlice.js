@@ -22,7 +22,7 @@ export const orderSlice = createSlice({
     },
     removeFromOrder: (state, action) => {
       const index = state.cart.cartItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item.id === action.payload
       );
       let newOrder = [...state.cart.cartItems];
       if (index >= 0) {

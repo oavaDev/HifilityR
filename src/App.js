@@ -8,6 +8,7 @@ import Register from './pages/Register/Register';
 import { Route, Routes } from 'react-router-dom';
 import Products from './pages/Products/Products';
 import { useEffect, useState } from 'react';
+import Cart from './pages/Cart/Cart';
 function App() {
   const [token, setToken] = useState();
   const [isLogged, setIsLogged] = useState(false);
@@ -49,6 +50,10 @@ function App() {
             element={
               isLogged ? <FullProductCard token={token && token} /> : <Login />
             }
+          />
+          <Route
+            path='/cart'
+            element={isLogged ? <Cart token={token && token} /> : <Login />}
           />
         </Routes>
       </div>
