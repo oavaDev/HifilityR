@@ -1,18 +1,22 @@
-import styles from './App.module.css';
+import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { useJwt } from 'react-jwt';
+
 import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import styles from './App.module.css';
 import FullProductCard from './components/FullProductCard/FullProductCard';
 import Navbar from './components/Navbar/Navbar';
 import Dashboard from './components/dashboard/Dashboard';
-import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
-import { Route, Routes } from 'react-router-dom';
 import Products from './pages/Products/Products';
-import { useEffect, useState } from 'react';
 import Cart from './pages/Cart/Cart';
+import Orders from './pages/orders/Orders';
 function App() {
   const [token, setToken] = useState();
+  const { decodedToken, isExpired } = useJwt(token);
   const [isLogged, setIsLogged] = useState(false);
-
+  const [user, setUser] = useState({});
   useEffect(() => {
     setToken(localStorage.getItem('token'));
     if (
@@ -20,17 +24,18 @@ function App() {
       localStorage.getItem('token') !== 'null' &&
       localStorage.getItem('token').length > 1
     ) {
+      setToken(localStorage.getItem('token'));
       setIsLogged(true);
     } else {
       setIsLogged(false);
     }
   }, [token]);
 
-  console.log(isLogged);
-  console.log(token);
+  token && console.log(decodedToken, isExpired);
+
   return (
     <>
-      <Navbar isLogged={isLogged} />
+      <Navbar islogged={isLogged} />
 
       <div className={styles.main}>
         {isLogged && <Dashboard />}
@@ -39,7 +44,7 @@ function App() {
           <Route path='/login' element={isLogged ? <Home /> : <Login />} />
           <Route
             path='/register'
-            element={isLogged ? <Register /> : <Login />}
+            element={isLogged ? <Home /> : <Register />}
           />
           <Route
             path='/products'
@@ -54,6 +59,10 @@ function App() {
           <Route
             path='/cart'
             element={isLogged ? <Cart token={token && token} /> : <Login />}
+          />
+          <Route
+            path='/orders'
+            element={isLogged ? <Orders token={token && token} /> : <Login />}
           />
         </Routes>
       </div>

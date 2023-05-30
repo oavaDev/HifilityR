@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Navbar, Text, Spacer, Button } from '@nextui-org/react';
 import Icon from '../Icon';
 const Nav = ({ islogged }) => {
@@ -18,7 +17,7 @@ const Nav = ({ islogged }) => {
           Hifility
         </Text>
       </Navbar.Brand>
-      {islogged ? (
+      {!islogged ? (
         <Navbar.Content as={'span'}>
           <Navbar.Link color='inherit' href='/login'>
             Inicia sesión

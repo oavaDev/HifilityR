@@ -26,6 +26,8 @@ const Register = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(user),
+    }).then((response) => {
+      window.location.href = '/';
     });
   };
 

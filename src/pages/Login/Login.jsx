@@ -33,8 +33,8 @@ const Login = () => {
       .then((response) => response)
       .then((data) => {
         setToken(data.headers.get('Authorization'));
+        console.log(data.json());
         localStorage.setItem('token', data.headers.get('Authorization'));
-        console.log(data.headers.get('Authorization'));
         window.location.href = '/';
       });
   };

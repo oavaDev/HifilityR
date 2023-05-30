@@ -15,7 +15,7 @@ import { itemsInCart } from '../../store/slices/orderSlice';
 import CartInfo from '../Cart/CartInfo/CartInfo';
 const Dashboard = () => {
   const cartItems = useSelector(itemsInCart);
-  console.log(cartItems);
+  
   const [open, setOpen] = useState(false);
   const handleOpen = (id) => {
     let item = id;
