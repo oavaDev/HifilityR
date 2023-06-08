@@ -31,7 +31,6 @@ function App() {
     }
   }, [token]);
 
-  token && console.log(decodedToken, isExpired);
 
   return (
     <>
@@ -58,7 +57,16 @@ function App() {
           />
           <Route
             path='/cart'
-            element={isLogged ? <Cart token={token && token} /> : <Login />}
+            element={
+              isLogged ? (
+                <Cart
+                  user={decodedToken && decodedToken}
+                  token={token && token}
+                />
+              ) : (
+                <Login />
+              )
+            }
           />
           <Route
             path='/orders'
