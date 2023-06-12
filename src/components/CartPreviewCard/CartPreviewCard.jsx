@@ -4,16 +4,17 @@ import { useSelector } from 'react-redux';
 import { Grid, Card, Text, Row, Button } from '@nextui-org/react';
 import { useDispatch } from 'react-redux';
 import { removeFromOrder } from '../../store/slices/orderSlice';
+import Empty from '../Empty/Empty';
 const CartPreviewCard = () => {
   const list = useSelector(itemsInCart);
   const dipatch = useDispatch();
   const removeHandler = (id) => {
     dipatch(removeFromOrder(id));
   };
-  list.length > 0 && console.log(list[0].id);
+
   return (
     <>
-      {list &&
+      {list[0] ? (
         list.map((item, index) => (
           <Grid style={{ margin: '1rem' }} key={index}>
             <Card isPressable>
@@ -31,7 +32,7 @@ const CartPreviewCard = () => {
               >
                 <Row wrap='wrap' justify='space-between' align='center'>
                   <Text style={{ color: '#171717' }} b>
-                    {item.name}
+                    {item.brand + ' ' + item.name}
                   </Text>
                   <Text
                     css={{
@@ -73,7 +74,10 @@ const CartPreviewCard = () => {
               </Card.Footer>
             </Card>
           </Grid>
-        ))}
+        ))
+      ) : (
+        <Empty />
+      )}
     </>
   );
 };

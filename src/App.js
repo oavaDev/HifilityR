@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { useJwt } from 'react-jwt';
 
 import Home from './pages/Home/Home';
@@ -30,11 +30,10 @@ function App() {
       setIsLogged(false);
     }
   }, [token]);
-
-
+  const location = useLocation().pathname;
   return (
     <>
-      <Navbar islogged={isLogged} />
+      <Navbar islogged={isLogged} location={location} />
 
       <div className={styles.main}>
         {isLogged && <Dashboard />}

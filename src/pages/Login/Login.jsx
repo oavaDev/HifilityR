@@ -10,8 +10,7 @@ const Login = () => {
 
   const [token, setToken] = useState("");
   token && console.log(token);
-  const [errorEmail, setErrorEmail] = useState(false);
-  const [errorPassword, setErrorPassword] = useState(false);
+  const [authError, setauthError] = useState(false);
 
   const handleEmail = (e) => {
     setUser({ ...user, email: e.target.value });
@@ -21,8 +20,8 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    
+    e.preventDefault();
+
     await fetch('http://localhost:8080/api/auth/login', {
       method: 'POST',
       headers: {
@@ -33,9 +32,13 @@ const Login = () => {
       .then((response) => response)
       .then((data) => {
         setToken(data.headers.get('Authorization'));
-        console.log(data.json());
-        localStorage.setItem('token', data.headers.get('Authorization'));
-        window.location.href = '/';
+        if (data.headers.get('Authorization')) {
+          localStorage.setItem('token', data.headers.get('Authorization'));
+          window.location.href = '/';
+          setauthError(false);
+        } else {
+          setauthError(true);
+        }
       });
   };
 
@@ -59,7 +62,6 @@ const Login = () => {
             value={user.email}
             onChange={(e) => handleEmail(e)}
           />
-          {errorEmail && <Text color='red'>Email is required</Text>}
           <Input.Password
             value={user.password}
             labelPlaceholder='Password'
@@ -67,7 +69,11 @@ const Login = () => {
             onChange={(e) => handlePassword(e)}
             initialValue=''
           />
-          {errorPassword && <Text color='red'>Password is required</Text>}
+          {authError && (
+            <Text color='error' as={'p'} h6>
+              Usuario o contraseña incorrectos
+            </Text>
+          )}
           <Buttonn label='Inicia sesión' />
         </form>
       </div>

@@ -1,12 +1,18 @@
-import React from 'react';
-import { Navbar, Text, Spacer, Button } from '@nextui-org/react';
+import React, { useEffect } from 'react';
+import { Navbar, Text, Spacer, Button, Loading } from '@nextui-org/react';
 import Icon from '../Icon';
-const Nav = ({ islogged }) => {
+import { useSelector } from 'react-redux';
+import { itemsInCart } from '../../store/slices/orderSlice';
+const Nav = ({ islogged, location }) => {
+  const list = useSelector(itemsInCart);
   const handleLogout = () => {
     localStorage.removeItem('token');
     window.location.href = '/';
   };
-
+  const [loaded, setLoaded] = React.useState(false);
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
   return (
     <Navbar isBordered variant='sticky' maxWidth={'fluid'}>
       <Navbar.Brand>
@@ -30,6 +36,18 @@ const Nav = ({ islogged }) => {
         </Navbar.Content>
       ) : (
         <Navbar.Content as={'span'}>
+          {location === '/cart' && list[0] && (
+            <Navbar.Item hideIn={'xs'} as={'span'}>
+                <Button color='success'>
+                  {loaded ? (
+                    'Agregar todo a la orden'
+                  ) : (
+                    <Loading color='currentColor' size='sm' />
+                  )}
+                </Button>
+            </Navbar.Item>
+          )}
+
           <Navbar.Item as={'span'}>
             <Button
               onClick={handleLogout}
