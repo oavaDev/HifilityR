@@ -44,5 +44,8 @@ export const selectTotal = (state) =>
     (total, item) => total + item.price * item.quantity,
     0
   );
+export const selectAllIds = (state) => {
+  return state.order.cart.cartItems.map((item) => item.id);
+};
 
 export default orderSlice.reducer;

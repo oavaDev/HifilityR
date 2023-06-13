@@ -12,6 +12,8 @@ import Register from './pages/Register/Register';
 import Products from './pages/Products/Products';
 import Cart from './pages/Cart/Cart';
 import Orders from './pages/orders/Orders';
+import { selectAllIds } from './store/slices/orderSlice';
+import { useSelector } from 'react-redux';
 function App() {
   const [token, setToken] = useState();
   const { decodedToken, isExpired } = useJwt(token);
@@ -36,7 +38,7 @@ function App() {
       <Navbar islogged={isLogged} location={location} />
 
       <div className={styles.main}>
-        {isLogged && <Dashboard />}
+        {isLogged && <Dashboard user={decodedToken} />}
         <Routes>
           <Route path='/' element={isLogged ? <Home /> : <Login />} />
           <Route path='/login' element={isLogged ? <Home /> : <Login />} />

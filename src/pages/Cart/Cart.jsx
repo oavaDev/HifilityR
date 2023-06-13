@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './Cart.module.css';
-
 import CartPreviewCard from '../../components/CartPreviewCard/CartPreviewCard';
 
-const Cart = () => {
+const Cart = ({ token, user }) => {
   return (
     <div className={styles.cart}>
-      <CartPreviewCard />
+      <CartPreviewCard token={token} user={user} />
     </div>
   );
 };

@@ -4,51 +4,6 @@ import styles from './Products.module.css';
 
 /* const data = [
   {
-    _id: { $oid: '6457f82e914207e3f914c7e6' },
-    image:
-      'https://cdn.shopify.com/s/files/1/0040/7201/3924/products/1_9_1818e743-5e56-4081-8837-7aff1cfcb675.jpg?v=1656312717',
-    brand: '7HZ',
-    name: 'Salnotes Dioko',
-    subTitle: '14.6mm Planar Diaphragm Driver In Ear Earphone ',
-    price: '130',
-    description: [
-      'Salnotes Dioko-14.6mm Planar Driver IEM',
-      '7Hz x Crinacle Tuning',
-      'N55 Magnet, Double-sided Array',
-      'Fine Tuned CNC-Machined Aluminum Shell',
-      'Tempered Glass & Sapphire Coating Surface',
-      'Premium OCC Copper Cable & Storage Box',
-    ],
-    rating: ['20', '3'],
-    createdAt: {
-      $date: { $numberLong: '1667600204242' },
-    },
-    updatedAt: {
-      $date: { $numberLong: '1667600204242' },
-    },
-    __v: { $numberInt: '0' },
-  },
-  {
-    _id: { $oid: '6457f855914207e3f914c7e7' },
-    image:
-      'https://cdn.shopify.com/s/files/1/0040/7201/3924/products/4_f66be796-3de2-4bb7-a5bd-9c551f6b630a.jpg?v=1663325641',
-    brand: 'HZSOUND',
-    name: 'Heart Mirror Pro',
-    subTitle: 'High Performance HiFi 10mm Dynamic Driver In-Ear Monitors ',
-    price: '71.99',
-    description: [
-      '10MM CNT Carbon Nanotube Diaphragm',
-      'Professional Tuning Adjustments',
-      'Exquisite Heart-shaped Appearance',
-      'Detachable High Purity Cable Design',
-      'Ergonomic Design',
-    ],
-    rating: ['20', '3'],
-    createdAt: { $date: { $numberLong: '1667600215031' } },
-    updatedAt: { $date: { $numberLong: '1667600215031' } },
-    __v: { $numberInt: '0' },
-  },
-  {
     _id: { $oid: '6457f86b914207e3f914c7e8' },
     image:
       'https://cdn.shopify.com/s/files/1/0040/7201/3924/products/1_7_16e84831-3fdb-4a19-b448-2ada2600e090.jpg?v=1663150202',
@@ -187,6 +142,7 @@ import styles from './Products.module.css';
 ]; */
 
 const Products = ({ token }) => {
+  
   const [data, setData] = useState([]);
 
   const retrieveData = async () => {
@@ -201,9 +157,11 @@ const Products = ({ token }) => {
       .then((data) => setData(data));
     return info;
   };
+
   useEffect(() => {
     retrieveData();
   }, []);
+
   return (
     <div className={styles.ProductWrapper}>
       {data &&

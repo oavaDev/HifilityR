@@ -13,9 +13,9 @@ import { BiUser } from 'react-icons/bi';
 import { useSelector } from 'react-redux';
 import { itemsInCart } from '../../store/slices/orderSlice';
 import CartInfo from '../Cart/CartInfo/CartInfo';
-const Dashboard = () => {
+const Dashboard = ({ user }) => {
   const cartItems = useSelector(itemsInCart);
-  
+
   const [open, setOpen] = useState(false);
   const handleOpen = (id) => {
     let item = id;
@@ -80,7 +80,7 @@ const Dashboard = () => {
           <BsBook size={25} onClick={(e) => handleOpen(e.target.id)} />
         )}
         {open ? (
-          <div>Username</div>
+          <div>{user.nombre}</div>
         ) : (
           <div>
             <BiUser size={25} />

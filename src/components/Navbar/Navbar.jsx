@@ -36,18 +36,6 @@ const Nav = ({ islogged, location }) => {
         </Navbar.Content>
       ) : (
         <Navbar.Content as={'span'}>
-          {location === '/cart' && list[0] && (
-            <Navbar.Item hideIn={'xs'} as={'span'}>
-                <Button color='success'>
-                  {loaded ? (
-                    'Agregar todo a la orden'
-                  ) : (
-                    <Loading color='currentColor' size='sm' />
-                  )}
-                </Button>
-            </Navbar.Item>
-          )}
-
           <Navbar.Item as={'span'}>
             <Button
               onClick={handleLogout}

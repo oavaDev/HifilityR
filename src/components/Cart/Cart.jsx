@@ -7,9 +7,8 @@ import CartIcon from './CartIcon/CartIcon';
 
 const Cart = ({ data }) => {
   const dispatch = useDispatch();
-
   const addOrderHandler = () => {
-    dispatch(addToOrder(data));
+    dispatch(addToOrder({ ...data, quantity: 1 }));
   };
   return (
     <div className={styles.cart_button}>

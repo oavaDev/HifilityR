@@ -27,12 +27,12 @@ const ProductCard = ({
     description,
   };
 
-  const clickHanler = () => {
+  const clickHandler = () => {
     navigate(`/products/${id}`, { state: data });
   };
 
   return (
-    <div onClick={clickHanler} className={styles.ProductCard__body}>
+    <div onClick={clickHandler} className={styles.ProductCard__body}>
       <div className={styles.ProductCard__body_image}>
         <img
           alt='img'

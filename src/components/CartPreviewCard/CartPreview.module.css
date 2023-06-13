@@ -1,0 +1,46 @@
+.Main{
+    width: 100%;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.Cart_prod{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+.prod{
+    width: 25rem;
+    gap: 1rem;
+
+}
+.cartAddButton{
+    width: 100vw;
+    margin: auto;
+    padding-left: 4rem;
+}
+.cartAddButton button{
+    width: 100%;
+}
+@media (max-width: 650px) {
+    .Main {
+        margin: auto;
+        width: 100%;
+        flex-direction: row;
+    }
+    .Cart_prod{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        flex-wrap: wrap;
+        margin-left: 4rem;
+
+    }
+    .prod{
+        width: 100%;
+        gap: 1rem;
+    
+    }
+  }
