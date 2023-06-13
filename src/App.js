@@ -14,6 +14,7 @@ import Cart from './pages/Cart/Cart';
 import Orders from './pages/orders/Orders';
 import { selectAllIds } from './store/slices/orderSlice';
 import { useSelector } from 'react-redux';
+import CreatedOrders from './components/CreatedOrders/CreatedOrders';
 function App() {
   const [token, setToken] = useState();
   const { decodedToken, isExpired } = useJwt(token);
@@ -72,6 +73,19 @@ function App() {
           <Route
             path='/orders'
             element={isLogged ? <Orders token={token && token} /> : <Login />}
+          />
+          <Route
+            path='/orders/created'
+            element={
+              isLogged ? (
+                <CreatedOrders
+                  token={token && token}
+                  user={decodedToken && decodedToken}
+                />
+              ) : (
+                <Login />
+              )
+            }
           />
         </Routes>
       </div>

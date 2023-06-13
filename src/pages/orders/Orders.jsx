@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './Orders.module.css';
 import { Card, Container, Spacer, Text, Col, Grid } from '@nextui-org/react';
+import { useNavigate } from 'react-router-dom';
 const Orders = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.order}>
       <Spacer y={2} />
@@ -33,7 +35,7 @@ const Orders = () => {
       </Container>
       <Spacer y={3} />
       <Grid.Container gap={2} justify='center'>
-        <Grid xs={4}>
+        <Grid onClick={() => navigate(`/orders/created`)} xs={4}>
           <Card isHoverable variant='bordered'>
             <Card.Header css={{ position: 'absolute', zIndex: 1, top: 5 }}>
               <Col>

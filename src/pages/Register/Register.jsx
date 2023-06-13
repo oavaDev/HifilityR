@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Register.module.css";
-import { Button, Input, Text } from "@nextui-org/react";
+import { Input, Text } from "@nextui-org/react";
 import Buttonn from "../../components/Button/Button";
 const Register = () => {
   const [user, setUser] = useState({
@@ -11,8 +11,7 @@ const Register = () => {
     password: '',
   });
 
-  const [errorEmail, setErrorEmail] = useState(false);
-  const [errorPassword, setErrorPassword] = useState(false);
+ 
 
   const handleInput = (e) => {
     const field = e.target.id;
