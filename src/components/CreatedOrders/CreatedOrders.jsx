@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styles from './CreatedOrders.module.css';
 import { Card, Grid, Row, Text } from '@nextui-org/react';
+import { useNavigate } from 'react-router-dom';
 const CreatedOrders = ({ token, user }) => {
   const [orders, setOrders] = useState();
-  console.log(user, token);
+  const navigate = useNavigate();
   const getOrders = () => {
     fetch(`http://localhost:8080/api/orders/client/${user.sub}`, {
       method: 'GET',
@@ -17,9 +18,13 @@ const CreatedOrders = ({ token, user }) => {
         setOrders(data);
       });
   };
+  const clickHandler = (id, data) => {
+    navigate(`/orders/created/${id}`, { state: data });
+  };
 
   useEffect(() => {
     user.sub && getOrders();
+    orders === undefined && user.sub === null && navigate('/orders');
   }, []);
   return (
     <div className={styles.Main}>
@@ -27,7 +32,7 @@ const CreatedOrders = ({ token, user }) => {
         orders.map((item, index) => {
           return (
             <Grid xs={6} sm={3} key={index}>
-              <Card isPressable>
+              <Card isPressable onClick={() => clickHandler(item.orderId, item)}>
                 <Card.Body css={{ p: 0 }}>
                   <Card.Image
                     src={
